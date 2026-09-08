@@ -1,7 +1,7 @@
 import os
 import http.server
 import socketserver
-
+import html 
 from http import HTTPStatus
 
 
@@ -9,7 +9,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
-        msg = 'Hello! you requested %s' % (self.path)
+        msg = 'Hello! you requested %s' % (html.save(self.path))
         self.wfile.write(msg.encode())
 
 
